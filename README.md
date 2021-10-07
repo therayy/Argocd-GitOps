@@ -1,7 +1,7 @@
 <br>
 
 <p align="center">
-    <img width="400px" src="imgs/openshift-gitops-banner.jpg">
+    <img width="400px" src="imgs/openshift-gitops-banner.png">
 </p>
 
 <br>
