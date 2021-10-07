@@ -3,8 +3,9 @@
 - Cluster requirements & reservation.
 - Create a Github Organization, Fork & Clone.
 - Install ArgoCD
-- Customize ArgoCD
-- Login in to the ArgoCD UI
+- 
+- 
+---
 
 ### Cluster requirements & reservation.
 
@@ -19,28 +20,45 @@
     - [multi-tenancy-gitops](https://github.com/cloud-native-toolkit/multi-tenancy-gitops)
        ``` 
        git clone https://github.com/<YOUR ORGANIZATION>/multi-tenancy-gitops.git
-       
        ```    
     - [multi-tenancy-gitops-apps](https://github.com/cloud-native-toolkit-demos/multi-tenancy-gitops-apps)
         ```
          git clone https://github.com/<YOUR ORGANIZATION>/multi-tenancy-gitops-apps.git 
-         
          ```
     - [multi-tenancy-gitops-services](https://github.com/cloud-native-toolkit/multi-tenancy-gitops-services)
         ``` 
         git clone https://github.com/<YOUR ORGANIZATION>/multi-tenancy-gitops-services.git
-        
         ```
     - [multi-tenancy-gitops-infra](https://github.com/cloud-native-toolkit/multi-tenancy-gitops-infra)   
         ```
-        git clone https://github.com/<YOUR ORGANIZATION>/multi-tenancy-gitops-infra.git
-       
+        git clone https://github.com/<YOUR ORGANIZATION>/multi-tenancy-gitops-infra.git  
         ```
 ### Install ArgoCD 
+
 - To insall the Red Hat GitOps operator follow the steps:
 
     - cd multi-tenancy-gitops
-    ```
-    oc apply -f setup/ocp47/
+    - This command is going to install Red Hat operator and the defaut ArgoCD instance
+        ```
+        oc apply -f setup/ocp47/ 
+        ```
+    - Let us now delete the default ArgoCD instance that is created earlier.
+        ```
+        oc delete gitopsservice cluster -n openshift-gitops || true
+        ```
+    - Create a custom ArgoCD instance.
+        ```
+        oc apply -f setup/ocp47/argocd-instance/ -n openshift-gitops
+        ```
+- Launch ArgoCD.
+    - ArgoCD can be accessed via an OpenShift route. Using a browser, navigate to the URL returned
+        ```
+        oc get route -n openshift-gitops | grep openshift-gitops-cntk-server | awk '{print "https://"$2}'
+        ```
+    - Logging in (Sign in with the user **admin**)
+        - Run the below cmd to get the Password
+        ```
+        oc get secret/openshift-gitops-cntk-cluster -n openshift-gitops -o json | jq -r '.data."admin.password"' | base64 -D
+        ```
+
     
-    ```
