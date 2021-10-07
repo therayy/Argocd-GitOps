@@ -1,6 +1,6 @@
 <br>
 
-<p align="left">
+<p align="center">
     <img width="500px" src="imgs/openshift-gitops-banner.png">
 </p>
 
