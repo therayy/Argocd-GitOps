@@ -5,6 +5,7 @@
 </p>
 
 <br>
+
 ## Installing customize ArgoCD using GitOps
 
 - Configure Cluster requirements & reservation.
