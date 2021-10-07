@@ -1,3 +1,10 @@
+<br>
+
+<p align="center">
+    <img width="400px" src="imgs/openshift-gitops-banner.jpg">
+</p>
+
+<br>
 ## Installing customize ArgoCD using GitOps
 
 - Configure Cluster requirements & reservation.
