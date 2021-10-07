@@ -1,10 +1,10 @@
 ## Installing customize ArgoCD using GitOps
 
-- Cluster requirements & reservation.
+- Configure Cluster requirements & reservation.
 - Create a Github Organization, Fork & Clone.
 - Install ArgoCD
-- 
-- 
+- Getting Started with GitOps
+- Deploying Services
 ---
 
 ### Cluster requirements & reservation.
