@@ -69,9 +69,28 @@
         oc get secret/openshift-gitops-cntk-cluster -n openshift-gitops -o json | jq -r '.data."admin.password"' | base64 -D
         ```
 ### Cloud Native MQ GitOps Configuration
- - Run the customization script
+- Run the customization script
     ```
     GIT_ORG=<Your Organization> GIT_BRANCH=master ./scripts/set-git-source.sh
     ```
     - git add, commit & push your changes by passing the $GIT_BRANCH=master.
+
+- Update multi-tenancy-gitops-apps repository
+    - git add, commit & push your changes by passing the $GIT_BRANCH=master.
+
+### Connect ArgoCD to the GitOps repository
+- Deploy Kubernetes resources with kustomization.yaml
+    - Open 0-bootstrap/single-cluster/1-infra/kustomization.yaml and uncomment the below resources:
+        ```
+        argocd/consolelink.yaml
+        argocd/consolenotification.yaml
+        argocd/namespace-ibm-common-services.yaml
+        argocd/namespace-ci.yaml
+        argocd/namespace-dev.yaml
+        argocd/namespace-staging.yaml
+        argocd/namespace-prod.yaml
+        argocd/namespace-sealed-secrets.yaml
+        argocd/namespace-tools.yaml
+        ```
+    - git add, commit & push your changes to the master branch.
     
