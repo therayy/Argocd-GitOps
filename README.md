@@ -100,4 +100,8 @@
     ```
     oc apply -f 0-bootstrap/single-cluster/bootstrap.yaml
     ```
-    
+- Get the status of your Bootstrap application.
+    ```
+    oc get app/bootstrap-single-cluster -n openshift-gitops
+    ```    
+### ArgoCD change management and governance
