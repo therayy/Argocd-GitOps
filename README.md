@@ -45,7 +45,7 @@
 
 - To insall the Red Hat GitOps operator follow the steps:
 
-    - cd multi-tenancy-gitops
+    - cd multi-tenancy-gitops || tree . -d -L 2
     - This command is going to install Red Hat operator and the defaut ArgoCD instance
         ```
         oc apply -f setup/ocp47/ 
@@ -68,5 +68,10 @@
         ```
         oc get secret/openshift-gitops-cntk-cluster -n openshift-gitops -o json | jq -r '.data."admin.password"' | base64 -D
         ```
-
+### Cloud Native MQ GitOps Configuration
+ - Run the customization script
+    ```
+    GIT_ORG=<Your Organization> GIT_BRANCH=master ./scripts/set-git-source.sh
+    ```
+    - git add, commit & push your changes by passing the $GIT_BRANCH=master.
     
