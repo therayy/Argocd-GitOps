@@ -93,4 +93,11 @@
         argocd/namespace-tools.yaml
         ```
     - git add, commit & push your changes to the master branch.
+
+### Apply ArgoCD bootstrap.yaml
+- Make sure that only the 1-infra is uncommented.
+- Apply the bootstrap YAML to the cluster:
+    ```
+    oc apply -f 0-bootstrap/single-cluster/bootstrap.yaml
+    ```
     
